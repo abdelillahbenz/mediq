@@ -2,28 +2,45 @@ function ResultsPage({ results, onAddToCart, cart }) {
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
-    <div>
-      <h2 className="app-title">Assessment Results</h2>
+    <div className="results-view">
+      <h2 style={{ marginBottom: '20px' }}>Assessment Results</h2>
 
       {results.map((item, index) => (
         <div className="result-card" key={index}>
-          <h3>{item.name}</h3>
-          <p>Price: {item.price} zł</p>
-          <button onClick={() => onAddToCart(item)}>
-            Add to cart
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div>
+              <h3 style={{ margin: 0 }}>{item.name}</h3>
+              <p style={{ color: '#64748b', margin: '5px 0' }}>Suggested for your symptoms</p>
+            </div>
+            <strong style={{ fontSize: '1.2rem', color: '#2563eb' }}>{item.price} zł</strong>
+          </div>
+          
+          {/* This className links to the professional CSS we wrote */}
+          <button 
+            className="add-to-cart-btn" 
+            onClick={() => onAddToCart(item)}
+          >
+            🛒 Add to Cart
           </button>
         </div>
       ))}
 
-      <div className="result-card">
-        <h3>Cart</h3>
-        <p>Items: {cart.length}</p>
-        <p>Total: {total} zł</p>
+      {/* Summary Card */}
+      <div className="result-card" style={{ backgroundColor: '#f8fafc', borderStyle: 'dashed' }}>
+        <h3 style={{ marginTop: 0 }}>Quick Summary</h3>
+        <p>Items in Cart: <strong>{cart.length}</strong></p>
+        <p>Current Total: <strong>{total} zł</strong></p>
       </div>
 
-      <p className="disclaimer">
-        Based on your answers, these options are commonly used.
-        Please consult a doctor.
+      <p style={{ 
+        fontSize: '0.8rem', 
+        color: '#94a3b8', 
+        marginTop: '20px', 
+        fontStyle: 'italic',
+        lineHeight: '1.4' 
+      }}>
+        Disclaimer: Based on your answers, these options are commonly used. 
+        This is a simulation and not medical advice. Please consult a doctor.
       </p>
     </div>
   );
