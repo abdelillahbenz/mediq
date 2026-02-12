@@ -40,7 +40,7 @@ body {
   text-align: center;
 }
 
-/* --- Re-styled Home Page (Back to the good look) --- */
+/* --- Home Page --- */
 .home-view h1 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
 .home-view p { color: var(--text-muted); margin-bottom: 2rem; line-height: 1.5; }
 
@@ -84,6 +84,45 @@ body {
 }
 
 .options-list button:hover { border-color: var(--primary); background: #f0f7ff; }
+
+/* --- Result Cards & Add to Cart Button --- */
+.result-card {
+  border: 1px solid #e2e8f0;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  background: white;
+  text-align: left; /* Ensures text aligns left inside the card */
+  transition: border-color 0.2s;
+}
+
+.result-card:hover {
+  border-color: var(--primary);
+}
+
+.add-to-cart-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.add-to-cart-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
 
 /* --- Sidebar Cart --- */
 .cart-sidebar {
