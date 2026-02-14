@@ -1,0 +1,33 @@
+{
+  "name": "mediq",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with Create React App",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdelillahbenz/mediq.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdelillahbenz/mediq/issues"
+  },
+  "homepage": "https://github.com/abdelillahbenz/mediq#readme",
+  "dependencies": {
+    "better-sqlite3": "^12.6.2",
+    "cors": "^2.8.6",
+    "drizzle-orm": "^0.45.1",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.9",
+    "nodemon": "^3.1.11"
+  }
+}
