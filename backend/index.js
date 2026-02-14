@@ -6,11 +6,15 @@ import { sqliteTable, integer, text } from "drizzle-orm/sqlite-core";
 import { like, or } from "drizzle-orm";
 
 const app = express();
-app.use(cors());
+
+// Middleware
+app.use(cors({
+  origin: "http://localhost:3000", // React default port
+}));
 app.use(express.json());
 
-// ---- CONNECT TO EXISTING DATABASE ----
-const sqlite = new Database("database/mediq.db"); // <-- your DB path
+// ---- DATABASE CONNECTION ----
+const sqlite = new Database("./database/mediq.db");
 const db = drizzle(sqlite);
 
 // ---- TABLES ----
@@ -30,16 +34,17 @@ const medicines = sqliteTable("medicines", {
 
 // ---- ROUTES ----
 
-// Save user (sign up)
+// Create user
 app.post("/users", async (req, res) => {
-  const { username, email, password } = req.body;
-
   try {
-    const result = await db
+    const { username, email, password } = req.body;
+
+    const newUser = await db
       .insert(users)
       .values({ username, email, password })
       .returning();
-    res.json(result);
+
+    res.json(newUser);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -47,33 +52,41 @@ app.post("/users", async (req, res) => {
 
 // Get all medicines
 app.get("/medicines", async (req, res) => {
-  const allMedicines = await db.select().from(medicines);
-  res.json(allMedicines);
+  try {
+    const allMedicines = await db.select().from(medicines);
+    res.json(allMedicines);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // Search medicines
 app.get("/medicines/search", async (req, res) => {
-  const q = req.query.q || "";
+  try {
+    const q = req.query.q || "";
 
-  const results = await db
-    .select()
-    .from(medicines)
-    .where(
-      or(
-        like(medicines.name, `%${q}%`),
-        like(medicines.keywords, `%${q}%`)
-      )
-    );
+    const results = await db
+      .select()
+      .from(medicines)
+      .where(
+        or(
+          like(medicines.name, `%${q}%`),
+          like(medicines.keywords, `%${q}%`)
+        )
+      );
 
-  res.json(results);
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
-
+/*
 app.get("/users", async (req, res) => {
   const allUsers = await db.select().from(users);
   res.json(allUsers);
 });
-
+*/
 // ---- START SERVER ----
 app.listen(5000, () => {
-  console.log("Server running on http://localhost:5000");
+  console.log("Backend running on http://localhost:5000");
 });
