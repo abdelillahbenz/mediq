@@ -3,7 +3,7 @@ import cors from "cors";
 import Database from "better-sqlite3";
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import { sqliteTable, integer, text } from "drizzle-orm/sqlite-core";
-import { like, or } from "drizzle-orm";
+import { like, or, eq } from "drizzle-orm";
 
 const app = express();
 
@@ -86,6 +86,21 @@ app.get("/users", async (req, res) => {
   res.json(allUsers);
 });
 */
+
+// backend index.js
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    // use eq from drizzle-orm
+    const user = await db.select().from(users).where(eq(users.email, email));
+    if (user.length === 0) return res.status(401).json({ error: "User not found" });
+    if (user[0].password !== password) return res.status(401).json({ error: "Wrong password" });
+
+    res.json({ success: true, username: user[0].username });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 // ---- START SERVER ----
 app.listen(5000, () => {
   console.log("Backend running on http://localhost:5000");
