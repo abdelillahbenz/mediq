@@ -1,0 +1,22 @@
+MedIQ – User Flow
+
+Home / Login
+→ Pain Assessment (Step-by-step questionnaire)
+
+Questionnaire Steps:
+1. Body Part
+2. Symptoms
+3. Severity
+4. Duration
+
+After completing all steps:
+→ Results Page (Top 3 Recommended Medicines)
+
+User options on Results page:
+- Save Assessment
+- Start New Assessment
+- Back to Home
+
+Note:
+The platform provides informational guidance only and does not replace professional medical advice.
+Results are generated based on the user’s selected answers.
