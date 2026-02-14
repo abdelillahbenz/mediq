@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.a4340e68.css",
-    "main.js": "/static/js/main.1f34aa9b.js",
-    "static/js/317.49cbe93a.chunk.js": "/static/js/317.49cbe93a.chunk.js",
-    "index.html": "/index.html",
-    "main.a4340e68.css.map": "/static/css/main.a4340e68.css.map",
-    "main.1f34aa9b.js.map": "/static/js/main.1f34aa9b.js.map",
-    "317.49cbe93a.chunk.js.map": "/static/js/317.49cbe93a.chunk.js.map"
+    "main.css": "/mediq/static/css/main.4e9d9587.css",
+    "main.js": "/mediq/static/js/main.776df5d6.js",
+    "static/js/453.90600e3e.chunk.js": "/mediq/static/js/453.90600e3e.chunk.js",
+    "index.html": "/mediq/index.html",
+    "main.4e9d9587.css.map": "/mediq/static/css/main.4e9d9587.css.map",
+    "main.776df5d6.js.map": "/mediq/static/js/main.776df5d6.js.map",
+    "453.90600e3e.chunk.js.map": "/mediq/static/js/453.90600e3e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a4340e68.css",
-    "static/js/main.1f34aa9b.js"
+    "static/css/main.4e9d9587.css",
+    "static/js/main.776df5d6.js"
   ]
 }
